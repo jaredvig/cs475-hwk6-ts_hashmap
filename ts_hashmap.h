@@ -15,7 +15,11 @@ typedef struct ts_hashmap_t {
    int capacity;
    int size;
 } ts_hashmap_t;
-
+typedef struct threadArgs{
+   ts_hashmap_t* map;
+   int numThreads;
+   int currthread;
+} threadArgs;
 // function declarations
 ts_hashmap_t *initmap(int capacity);
 int get(ts_hashmap_t *map, int key);
@@ -23,3 +27,5 @@ int put(ts_hashmap_t *map, int key, int value);
 int del(ts_hashmap_t *map, int key);
 double lf(ts_hashmap_t *map);
 void printmap(ts_hashmap_t *map);
+void freemap(ts_hashmap_t *map);
+void *parTest(void* voidArgs);
